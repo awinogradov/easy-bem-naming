@@ -1,3 +1,5 @@
+'use strict';
+
 const originalBemNaming = require('@bem/naming');
 
 class BemNamingEntity {
