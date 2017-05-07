@@ -1,6 +1,6 @@
 {
   "name": "easy-bem-naming",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Easy and much friendly API for @bem/naming package",
   "main": "src",
   "scripts": {
