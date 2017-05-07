@@ -9,11 +9,11 @@ Easy and much friendly API for [@bem/naming](https://github.com/bem-sdk/bem-nami
 [npm]:          https://www.npmjs.org/package/easy-bem-naming
 [npm-img]:      https://img.shields.io/npm/v/easy-bem-naming.svg
 
-[travis]:       https://travis-ci.org/awingoradov/easy-bem-naming
+[travis]:       https://travis-ci.org/awingradov/easy-bem-naming
 [test-img]:     https://img.shields.io/travis/awingoradov/easy-bem-naming/master.svg
 
-[david]:          https://david-dm.org/awingoradov/easy-bem-naming
-[dependency-img]: http://img.shields.io/david/awingoradov/easy-bem-naming.svg
+[david]:          https://david-dm.org/awingradov/easy-bem-naming
+[dependency-img]: http://img.shields.io/david/awingradov/easy-bem-naming.svg
 
 # Usage
 
