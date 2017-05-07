@@ -57,8 +57,10 @@ class BemNamingEntity {
    *
    * @returns {BemNamingEntity} entity instance.
    */
-  mix() {
-    this._entityMixes = this._entityMixes.concat(Array.prototype.slice.call(arguments, 0));
+  mix(mixes) {
+    this._entityMixes = this._entityMixes.concat(
+      mixes && mixes.length ? mixes : Array.prototype.slice.call(arguments, 0)
+    );
     return this;
   }
   /**
@@ -68,15 +70,24 @@ class BemNamingEntity {
    */
   entities() {
     let all = Object.keys(this._entityMods).reduce((accum, modName) => {
-      accum.push(Object.assign({}, this._entity, {
+      // dont push { block: 'b', elem: 'e', mod: { name: 'm', val: false } }
+      this._entityMods[modName] && accum.push(Object.assign({}, this._entity, {
           mod: { name: modName, val: this._entityMods[modName] }
       }));
       return accum;
     }, [this._entity]);
 
-    return this._entityMixes.reduce((accum, mix) => accum.concat(
-      typeof mix === 'string' ? mix : mix.entities()
-    ), all);
+    return this._entityMixes.reduce((accum, mix) => {
+      if(typeof mix === 'string') {
+        return accum.concat(mix);
+      }
+
+      if(mix instanceof BemNamingEntity) {
+        return accum.concat(mix.entities());
+      }
+
+      return accum;
+    }, all);
   }
   /**
    * Returns className string.
@@ -84,7 +95,8 @@ class BemNamingEntity {
    * @returns {String} entity className string.
    */
   stringify() {
-    return this.entities().map(entity =>
+    const entities = this.entities();
+    return entities.map(entity =>
       typeof entity === 'string' ? entity : this._bemNaming.stringify(entity)
     ).join(' ');
   }

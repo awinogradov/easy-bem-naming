@@ -25,6 +25,10 @@ it('Should add elem to block with mods', () => {
     .toBe('block__elem block__elem_m1_v1 block__elem_m2_v2');
 });
 
+it('Should stringify elem with mods', () => {
+  expect(s(b('block').e('elem').m({ m: 'v', a: undefined }))).toBe('block__elem block__elem_m_v');
+});
+
 it('Should override existing mods', () => {
   expect(s(b('block').m({ m1: 'v1', m2: 'v2' }).e('elem').m({ m2: 'v3'})))
     .toBe('block__elem block__elem_m1_v1 block__elem_m2_v3');
@@ -32,6 +36,10 @@ it('Should override existing mods', () => {
 
 it('Should stringify string mix', () => {
   expect(s(b('block').mix('mixedBlock'))).toBe('block mixedBlock');
+});
+
+it('Should stringify array mix', () => {
+  expect(s(b('block').mix(['mixedBlock1', b('mixedBlock2'), null]))).toBe('block mixedBlock1 mixedBlock2');
 });
 
 it('Should stringify BemEntity mix', () => {
