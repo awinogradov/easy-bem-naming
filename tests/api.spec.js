@@ -1,4 +1,4 @@
-const ebn = require('easy-bem-naming');
+const ebn = require('easy-bem-naming').default;
 const b = ebn();
 
 const s = entity => entity.toString();
