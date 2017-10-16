@@ -1,7 +1,7 @@
 {
   "name": "easy-bem-naming",
-  "version": "2.0.0",
-  "description": "Easy and much friendly API for @bem/naming package",
+  "version": "2.1.0",
+  "description": "Easy and much friendly API for bem-naming",
   "main": "dist/",
   "scripts": {
     "test": "jest ."
@@ -31,6 +31,9 @@
     "jest": "^20.0.0",
     "typescript": "^2.5.3"
   },
+  "files": [
+    "dist"
+  ],
   "jest": {
     "moduleNameMapper": {
       "easy-bem-naming": "<rootDir>/src/index.ts"
