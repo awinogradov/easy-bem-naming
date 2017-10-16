@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/awinogradov/easy-bem-naming#readme",
   "dependencies": {
-    "@bem/naming": "^2.0.0-6"
+    "@bem/sdk.naming.entity.stringify": "0.2.1",
+    "@bem/sdk.naming.presets": "0.0.4"
   },
   "devDependencies": {
     "jest": "^20.0.0"

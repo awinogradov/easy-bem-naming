@@ -1,14 +1,16 @@
 'use strict';
 
-const originalBemNaming = require('@bem/naming');
+const stringify = require('@bem/sdk.naming.entity.stringify');
+const presets = require('@bem/sdk.naming.presets');
 
 class BemNamingEntity {
   /**
    * @param {Object} block — block name.
-   * @param {Function} bemNaming — @bem/naming instance with declared options.
+   * @param {Function} stringify — stringify function
+   * @param {Object} preset — convention
    */
-  constructor(block, bemNaming) {
-    this._bemNaming = bemNaming;
+  constructor(block, stringify, preset) {
+    this._bemNaming = { stringify: stringify(presets[preset || 'origin']) };
     this._entity = { block };
     this._entityMods = {};
     this._entityMixes = [];
@@ -124,9 +126,9 @@ class BemNamingEntity {
 
 }
 /**
- * @param {options} options – @bem/naming options.
+ * @param {String} preset – convention.
  * @param {options} block — entity block name.
  *
  * @returns {BemNamingEntity} entity instance.
  */
-module.exports = options => block => new BemNamingEntity(block, originalBemNaming(options));
+module.exports = preset => block => new BemNamingEntity(block, stringify, preset);
